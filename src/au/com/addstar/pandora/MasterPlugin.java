@@ -94,13 +94,13 @@ public class MasterPlugin extends JavaPlugin {
         registerModule("BeaconFix", "au.com.addstar.pandora.modules.BeaconFix","ProtocolLib");
         registerModule("AntiPortalEntityTravel", "au.com.addstar.pandora.modules.AntiPortalEntityTravel");
         registerModule("SignColour", "au.com.addstar.pandora.modules.SignColour");
-        registerModule("MinigameBCast", "au.com.addstar.pandora.modules.MinigameBroadcaster","Minigames", "ChatControlRed");
+        registerModule("MinigameBCast", "au.com.addstar.pandora.modules.MinigameBroadcaster","Minigames", "ChatControl");
         registerModule("AntiBuild", "au.com.addstar.pandora.modules.AntiBuild");
         registerModule("ItemDB", "au.com.addstar.pandora.modules.ItemDB", "Monolith");
         registerModule("ItemMetaReporter", "au.com.addstar.pandora.modules.ItemMetaReporter");
         registerModule("ItemGiving", "au.com.addstar.pandora.modules.ItemGiving","Monolith");
         registerModule("LobbyProtection", "au.com.addstar.pandora.modules.LobbyProtection");
-        registerModule("SurvivalGamesBCast", "au.com.addstar.pandora.modules.SurvivalGamesBroadcaster","SurvivalGames", "ChatControlRed");
+        registerModule("SurvivalGamesBCast", "au.com.addstar.pandora.modules.SurvivalGamesBroadcaster","SurvivalGames", "ChatControl");
         registerModule("MemoryCleaner", "au.com.addstar.pandora.modules.MemoryCleaner");
         registerModule("AngryPigmen", "au.com.addstar.pandora.modules.AngryPigmen");
         registerModule("ClaimSelect", "au.com.addstar.pandora.modules.ClaimSelect", "GriefPrevention", "WorldEdit");
@@ -109,7 +109,7 @@ public class MasterPlugin extends JavaPlugin {
         registerModule("GPExtended", "au.com.addstar.pandora.modules.GPExtended", "GriefPrevention");
         registerModule("MinigameLocks", "au.com.addstar.pandora.modules.MinigameLocks", "Minigames");
         registerModule("PlayerLocationLimit", "au.com.addstar.pandora.modules.PlayerLocationLimit");
-        registerModule("BlockhuntBroadcaster", "au.com.addstar.pandora.modules.BlockhuntBroadcaster", "BlockHunt", "ChatControlRed");
+        registerModule("BlockhuntBroadcaster", "au.com.addstar.pandora.modules.BlockhuntBroadcaster", "BlockHunt", "ChatControl");
         registerModule("BookMonitor", "au.com.addstar.pandora.modules.BookMonitor", "Monolith");
         registerModule("TreasureHelper", "au.com.addstar.pandora.modules.TreasuresHelper", "Treasures");
         registerModule("AntiSwim", "au.com.addstar.pandora.modules.AntiSwim");
@@ -118,15 +118,16 @@ public class MasterPlugin extends JavaPlugin {
         registerModule("DeathInterceptor", "au.com.addstar.pandora.modules.DeathInterceptor");
         registerModule("ActionBlocker", "au.com.addstar.pandora.modules.ActionBlocker");
         registerModule("Limbo", "au.com.addstar.pandora.modules.Limbo");
-        registerModule("BuildBattleBroadcaster", "au.com.addstar.pandora.modules.BuildBattleBroadcaster", "BuildBattle", "ChatControlRed");
-        registerModule("MurderMysteryBroadcaster", "au.com.addstar.pandora.modules.MurderMysteryBroadcaster", "MurderMystery", "ChatControlRed");
+        registerModule("BuildBattleBroadcaster", "au.com.addstar.pandora.modules.BuildBattleBroadcaster", "BuildBattle", "ChatControl");
+        registerModule("MurderMysteryBroadcaster", "au.com.addstar.pandora.modules.MurderMysteryBroadcaster", "MurderMystery", "ChatControl");
         registerModule("LagSpikeDetector", "au.com.addstar.pandora.modules.LagSpikeDetector");
         registerModule("SlimefunTweaks", "au.com.addstar.pandora.modules.SlimefunTweaks", "Slimefun");
         registerModule("PrisonPayLimiter", "au.com.addstar.pandora.modules.PrisonPayLimiter", "PrisonMines");
-        registerModule("ChatControlHelper", "au.com.addstar.pandora.modules.ChatControlHelper", "ChatControlRed");
-        registerModule("StaffChat", "au.com.addstar.pandora.modules.StaffChat", "ChatControlRed");
+        registerModule("ChatControlHelper", "au.com.addstar.pandora.modules.ChatControlHelper", "ChatControl");
+        registerModule("StaffChat", "au.com.addstar.pandora.modules.StaffChat", "ChatControl");
         registerModule("RPlaceDynmap", "au.com.addstar.pandora.modules.RPlaceDynmap", "dynmap", "RPlace");
         registerModule("Konquest", "au.com.addstar.pandora.modules.Konquest", "Konquest");
+        registerModule("MineChessHelper", "au.com.addstar.pandora.modules.MineChessHelper","MineChessPlus", "ChatControl");
     }
 
     @Override
@@ -372,15 +373,15 @@ public class MasterPlugin extends JavaPlugin {
             Channel realchannel = Channel.findChannel(channel);
             String colourmsg = ChatColor.translateAlternateColorCodes('&', msg);
             try {
-                realchannel.sendMessage(sender, msg, true);
+                realchannel.sendMessage(sender, msg);
             } catch (EventHandledException e) {
                 if (e.isCancelled()) {
                     getLogger().warning("Error: Chat message of " + sender.getName()
-                            + " was cancelled by CCR: " + e.getMessages()[0]);
+                            + " was cancelled by CCR: " + e.getMessage());
                     sender.sendMessage(ChatColor.RED + "Your chat message was cancelled");
                 } else {
                     getLogger().warning("Error: Failed to send chat message of " + sender.getName() + ": "
-                            + e.getMessages()[0]);
+                            + e.getMessage());
                     sender.sendMessage(ChatColor.RED + "Error sending channel message");
                 }
             } catch (Exception e) {

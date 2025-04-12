@@ -313,6 +313,13 @@
             </exclusions>
         </dependency>
 
+        <!-- MineChessPlus -->
+        <dependency>
+            <groupId>mcp.ajneb97</groupId>
+            <artifactId>MineChessPlus</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
         <dependency>
             <groupId>com.griefcraft.lwc</groupId>
             <artifactId>Modern-LWC</artifactId>
@@ -427,8 +434,8 @@
 
         <dependency>
             <groupId>org.mineacademy</groupId>
-            <artifactId>ChatControl-Red</artifactId>
-            <version>10.18.8</version>
+            <artifactId>chatcontrol-bukkit</artifactId>
+            <version>11.3.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.mineacademy</groupId>
