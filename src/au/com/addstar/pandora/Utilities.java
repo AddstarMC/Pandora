@@ -85,10 +85,12 @@ public class Utilities {
             time += seconds * 1000L;
             time += minutes * 60000L;
             time += hours * 3600000L;
-            time += days * 72000000L;
-            time += weeks * 504000000L;
-            time += months * 2191500000L;
-            time += years * 26298000000L;
+            // Use standard real world values when converting larger time units
+            // into milliseconds rather than the old shortened versions
+            time += days * 86400000L;
+            time += weeks * 604800000L;
+            time += months * 2592000000L;
+            time += years * 31536000000L;
 
             if (negative)
                 time *= -1;
