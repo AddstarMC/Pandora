@@ -86,7 +86,7 @@ public class TreasuresHelper implements Module, Listener {
         // Broadcast the message across other servers
         mPlugin.sendChatControlMessage(Bukkit.getConsoleSender(), mConfig.broadcast_channel, msg);
         if (mConfig.verboseChests)
-            mPlugin.getLogger().info(event.getPlayer().getDisplayName() + " recieved a  " + event.getRewardName() + "( " + event.getRarity() + ")");
+            mPlugin.getLogger().info(event.getPlayer().getDisplayName() + " received a  " + event.getRewardName() + "( " + event.getRarity() + ")");
     }
 
     private class Config extends AutoConfig {
