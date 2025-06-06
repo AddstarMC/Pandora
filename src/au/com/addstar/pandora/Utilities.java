@@ -308,7 +308,7 @@ public class Utilities {
                     return "Virtual Map";
                 }
                 int x = ((MapMeta) meta).getMapView().getCenterX();
-                int y = ((MapMeta) meta).getMapView().getCenterX();
+                int y = ((MapMeta) meta).getMapView().getCenterZ();
                 String world = ((MapMeta) meta).getMapView().getWorld().getName();
                 return String.format("Map of %1s centered on %2d, %3d", world, x, y);
             }
