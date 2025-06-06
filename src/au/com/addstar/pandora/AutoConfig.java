@@ -193,7 +193,7 @@ public abstract class AutoConfig {
                             throw new IllegalArgumentException("Cannot use type " + field.getType().getSimpleName() + "<" + type.toString() + "> for AutoConfiguration");   //$NON-NLS-2$ //$NON-NLS-2$
                     } else if (Set.class.isAssignableFrom(field.getType())) {
                         if (field.getGenericType() == null)
-                            throw new IllegalArgumentException("Cannot use type set without specifying generic type for AytoConfiguration");
+                            throw new IllegalArgumentException("Cannot use type set without specifying generic type for AutoConfiguration");
 
                         Type type = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
 
