@@ -146,8 +146,8 @@
             <url>https://repo.mikeprimm.com/</url>
         </repository>
         <repository>
-            <id>simplix</id>
-            <url>https://repo.simplix.dev/</url>
+            <id>packetevents-repo</id>
+            <url>https://repo.retrooper.dev/public/</url>
         </repository>
     </repositories>
 
@@ -529,11 +529,11 @@
             <artifactId>Konquest</artifactId>
             <version>0.12.0</version>
         </dependency>
-        <!-- PacketEvents / Protocolize -->
+        <!-- PacketEvents -->
         <dependency>
-            <groupId>dev.simplix.protocolize</groupId>
-            <artifactId>packetevents-bukkit</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.github.retrooper.packetevents</groupId>
+            <artifactId>spigot</artifactId>
+            <version>2.3.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

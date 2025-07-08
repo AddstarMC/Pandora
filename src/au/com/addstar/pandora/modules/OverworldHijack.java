@@ -2,23 +2,24 @@ package au.com.addstar.pandora.modules;
 
 import au.com.addstar.pandora.MasterPlugin;
 import au.com.addstar.pandora.Module;
-import dev.simplix.protocolize.api.Protocolize;
-import dev.simplix.protocolize.api.event.PacketListener;
-import dev.simplix.protocolize.api.event.PacketSendEvent;
-import dev.simplix.protocolize.api.mapping.MappingData;
-import dev.simplix.protocolize.data.packets.PlayServerJoinGame;
-import dev.simplix.protocolize.data.packets.PlayServerRespawn;
+import com.github.retrooper.packetevents.PacketEvents;
+import com.github.retrooper.packetevents.event.PacketListener;
+import com.github.retrooper.packetevents.event.PacketSendEvent;
+import com.github.retrooper.packetevents.packettype.PacketType;
+import com.github.retrooper.packetevents.protocol.world.DimensionType;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerJoinGame;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerRespawn;
 
 public class OverworldHijack implements Module, PacketListener {
 
     @Override
     public void onEnable() {
-        Protocolize.listenerProvider().registerListener(this);
+        PacketEvents.get().getEventManager().registerListener(this);
     }
 
     @Override
     public void onDisable() {
-        Protocolize.listenerProvider().unregisterListener(this);
+        PacketEvents.get().getEventManager().unregisterListener(this);
     }
 
     @Override
@@ -26,28 +27,29 @@ public class OverworldHijack implements Module, PacketListener {
     }
 
     @Override
-    public void packetSend(PacketSendEvent event) {
-        Object packet = event.packet();
-        if (packet instanceof PlayServerJoinGame) {
-            handle((PlayServerJoinGame) packet);
-        } else if (packet instanceof PlayServerRespawn) {
-            handle((PlayServerRespawn) packet);
+    public void onPacketSend(PacketSendEvent event) {
+        if (event.getPacketType() == PacketType.Play.Server.JOIN_GAME) {
+            WrapperPlayServerJoinGame packet = new WrapperPlayServerJoinGame(event);
+            handle(packet);
+        } else if (event.getPacketType() == PacketType.Play.Server.RESPAWN) {
+            WrapperPlayServerRespawn packet = new WrapperPlayServerRespawn(event);
+            handle(packet);
         }
     }
 
-    private void handle(PlayServerJoinGame packet) {
-        MappingData.Dimension dim = packet.getDimension();
-        if (dim != MappingData.Dimension.NETHER && dim != MappingData.Dimension.END) {
-            packet.setDimension(MappingData.Dimension.OVERWORLD);
-            packet.setDimensionType(MappingData.Dimension.OVERWORLD);
+    private void handle(WrapperPlayServerJoinGame packet) {
+        DimensionType dim = packet.getDimensionType();
+        if (dim != DimensionType.NETHER && dim != DimensionType.END) {
+            packet.setDimensionType(DimensionType.OVERWORLD);
+            packet.setDimension(DimensionType.OVERWORLD);
         }
     }
 
-    private void handle(PlayServerRespawn packet) {
-        MappingData.Dimension dim = packet.getDimension();
-        if (dim != MappingData.Dimension.NETHER && dim != MappingData.Dimension.END) {
-            packet.setDimension(MappingData.Dimension.OVERWORLD);
-            packet.setDimensionType(MappingData.Dimension.OVERWORLD);
+    private void handle(WrapperPlayServerRespawn packet) {
+        DimensionType dim = packet.getDimensionType();
+        if (dim != DimensionType.NETHER && dim != DimensionType.END) {
+            packet.setDimensionType(DimensionType.OVERWORLD);
+            packet.setDimension(DimensionType.OVERWORLD);
         }
     }
 }
