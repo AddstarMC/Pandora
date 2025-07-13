@@ -126,6 +126,7 @@ public class MasterPlugin extends JavaPlugin {
         registerModule("ChatControlHelper", "au.com.addstar.pandora.modules.ChatControlHelper", "ChatControl");
         registerModule("StaffChat", "au.com.addstar.pandora.modules.StaffChat", "ChatControl");
         registerModule("RPlaceDynmap", "au.com.addstar.pandora.modules.RPlaceDynmap", "dynmap", "RPlace");
+        registerModule("SpawnFixer", "au.com.addstar.pandora.modules.SpawnFixer");
         registerModule("Konquest", "au.com.addstar.pandora.modules.Konquest", "Konquest");
         registerModule("MineChessHelper", "au.com.addstar.pandora.modules.MineChessHelper","MineChessPlus", "ChatControl");
     }
