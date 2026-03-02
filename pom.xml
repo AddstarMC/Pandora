@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>au.com.addstar</groupId>
     <artifactId>Pandora</artifactId>
-    <version>1.19.2-SNAPSHOT</version>
+    <version>1.20.4-SNAPSHOT</version>
     <name>Pandora</name>
     <description>Multi Module plugin for NMS VERSION ${spigot.version} and Monolith ${monolith.version} designed
         for AddstarMC
@@ -18,8 +18,8 @@
         <plugin.version>${project.version}-${build.number}</plugin.version>
         <mainClass>au.com.addstar.pandora.MasterPlugin</mainClass>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spigot.api.version>1.19</spigot.api.version>
-        <spigot.version>${spigot.api.version}.2-R0.1-SNAPSHOT</spigot.version>
+        <spigot.api.version>1.20</spigot.api.version>
+        <spigot.version>${spigot.api.version}.4-R0.1-SNAPSHOT</spigot.version>
         <monolith.version>1.16.3-SNAPSHOT</monolith.version>
     </properties>
     <scm>
@@ -44,12 +44,12 @@
         <repository>
             <id>maven.addstar.com.au</id>
             <name>maven.addstar.com.au-releases</name>
-            <url>https://maven.addstar.com.au/artifactory/ext-release-local</url>
+            <url>https://maven.addstar.com.au/artifactory/all-release/</url>
         </repository>
         <snapshotRepository>
             <id>maven.addstar.com.au</id>
             <name>maven.addstar.com.au-snapshots</name>
-            <url>https://maven.addstar.com.au/artifactory/ext-snapshot-local</url>
+            <url>https://maven.addstar.com.au/artifactory/all-snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
     <repositories>
@@ -144,6 +144,12 @@
         <repository>
             <id>MikeRepo</id>
             <url>https://repo.mikeprimm.com/</url>
+        </repository>
+
+        <!-- PlaceholderAPI -->
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
     </repositories>
 
@@ -525,6 +531,22 @@
             <artifactId>Konquest</artifactId>
             <version>0.12.0</version>
         </dependency>
+
+        <!-- PlaceholderAPI -->
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>2.11.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Adventure MiniMessage (already included in Paper API but explicit for clarity) -->
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-text-minimessage</artifactId>
+            <version>4.14.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -550,7 +572,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.13.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>

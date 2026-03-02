@@ -128,6 +128,7 @@ public class MasterPlugin extends JavaPlugin {
         registerModule("RPlaceDynmap", "au.com.addstar.pandora.modules.RPlaceDynmap", "dynmap", "RPlace");
         registerModule("Konquest", "au.com.addstar.pandora.modules.Konquest", "Konquest");
         registerModule("MineChessHelper", "au.com.addstar.pandora.modules.MineChessHelper","MineChessPlus", "ChatControl");
+        registerModule("PlaceholderUtils", "au.com.addstar.pandora.modules.PlaceholderUtils", "PlaceholderAPI");
     }
 
     @Override
