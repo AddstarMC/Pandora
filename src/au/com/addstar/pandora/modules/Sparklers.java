@@ -123,22 +123,22 @@ public class Sparklers implements Module, Listener, CommandExecutor {
 
             switch (sparkler.effect) {
                 case Colour:
-                    world.spawnParticle(Particle.REDSTONE, temp, 3, 0.15, 0.4, 0.15, 3);
+                    world.spawnParticle(Particle.DUST, temp, 3, 0.15, 0.4, 0.15, 3);
                     break;
                 case Fire:
                     world.spawnParticle(Particle.FLAME, temp, 3, 0.15, 0.4, 0.15, 0.03);
                     break;
                 case Smoke:
-                    world.spawnParticle(Particle.FIREWORKS_SPARK, temp, 3, 0.15, 0.4, 0.15, 0.03);
+                    world.spawnParticle(Particle.FIREWORK, temp, 3, 0.15, 0.4, 0.15, 0.03);
                     break;
                 case Ender:
                     world.spawnParticle(Particle.PORTAL, temp, 6, 0.15, 0.4, 0.15, 0.2);
                     break;
                 case Purple:
-                    world.spawnParticle(Particle.SPELL_WITCH, temp, 3, 0.15, 0.4, 0.15, 0.0);
+                    world.spawnParticle(Particle.WITCH, temp, 3, 0.15, 0.4, 0.15, 0.0);
                     break;
                 case Emerald:
-                    world.spawnParticle(Particle.VILLAGER_HAPPY, temp, 3, 0.15, 0.4, 0.15, 0.6);
+                    world.spawnParticle(Particle.HAPPY_VILLAGER, temp, 3, 0.15, 0.4, 0.15, 0.6);
                     break;
             }
 
@@ -311,7 +311,7 @@ public class Sparklers implements Module, Listener, CommandExecutor {
     public ItemStack makeSparkler(SparklerEffect effect, int count) {
         ItemStack item = new ItemStack(Material.LEVER, count);
 
-        item.addUnsafeEnchantment(Enchantment.ARROW_FIRE, 1);
+        item.addUnsafeEnchantment(Enchantment.FLAME, 1);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(mItemName + ChatColor.GRAY + " - " + ChatColor.RED + effect.name());
         meta.setLore(Collections.singletonList(ChatColor.GRAY + "Right click this to create a shower of sparks"));

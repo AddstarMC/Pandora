@@ -45,12 +45,12 @@ public class PVPHandler implements Module, Listener {
 
     public PVPHandler() {
         mBadEffects.add(PotionEffectType.BLINDNESS);
-        mBadEffects.add(PotionEffectType.CONFUSION);
-        mBadEffects.add(PotionEffectType.HARM);
+        mBadEffects.add(PotionEffectType.NAUSEA);
+        mBadEffects.add(PotionEffectType.INSTANT_DAMAGE);
         mBadEffects.add(PotionEffectType.HUNGER);
         mBadEffects.add(PotionEffectType.POISON);
-        mBadEffects.add(PotionEffectType.SLOW);
-        mBadEffects.add(PotionEffectType.SLOW_DIGGING);
+        mBadEffects.add(PotionEffectType.SLOWNESS);
+        mBadEffects.add(PotionEffectType.MINING_FATIGUE);
         mBadEffects.add(PotionEffectType.WEAKNESS);
         mBadEffects.add(PotionEffectType.WITHER);
     }

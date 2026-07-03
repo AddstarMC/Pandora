@@ -48,8 +48,8 @@ public class SlimefunTweaks implements Module, Listener {
             if (mConfig.allowSlimefunEnchants) {
                 // Allow disenchanting of Reinforced Armour
                 if (
-                        ((enchant == Enchantment.PROTECTION_ENVIRONMENTAL) && (level == 9)) ||
-                        ((enchant == Enchantment.PROTECTION_ENVIRONMENTAL) && (level == 9))) {
+                        ((enchant == Enchantment.PROTECTION) && (level == 9)) ||
+                        ((enchant == Enchantment.PROTECTION) && (level == 9))) {
                     break;
                 }
             }

@@ -35,8 +35,8 @@ public class AntiSpawnerChange implements Module, Listener {
 
             if (block.getType() == Material.SPAWNER && MaterialTags.SPAWN_EGGS.isTagged(item.getType())) {
                 // Allow the change if the spawn egg item is enchanted with unbreaking 10
-                if (item.getEnchantments().containsKey(org.bukkit.enchantments.Enchantment.DURABILITY)
-                        && item.getEnchantments().get(org.bukkit.enchantments.Enchantment.DURABILITY) == 10) {
+                if (item.getEnchantments().containsKey(org.bukkit.enchantments.Enchantment.UNBREAKING)
+                        && item.getEnchantments().get(org.bukkit.enchantments.Enchantment.UNBREAKING) == 10) {
                     return;
                 }
 
