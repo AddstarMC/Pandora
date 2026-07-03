@@ -523,14 +523,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- VillageDefense -->
-        <dependency>
-            <groupId>pl.plajer</groupId>
-            <artifactId>villagedefense</artifactId>
-            <version>4.4.2</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Craftconomy3 -->
         <dependency>
             <groupId>com.greatmancode</groupId>
