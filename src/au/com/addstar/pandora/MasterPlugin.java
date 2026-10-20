@@ -17,13 +17,12 @@
 package au.com.addstar.pandora;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mineacademy.chatcontrol.lib.exception.EventHandledException;
-import org.mineacademy.chatcontrol.model.Channel;
 
 import java.io.File;
 import java.util.*;
@@ -145,8 +144,15 @@ public class MasterPlugin extends JavaPlugin {
         getCommand("pandora").setExecutor(cmd);
         getCommand("pandora").setTabCompleter(cmd);
 
-        registerModules();
-        loadModules();
+        // Modules are loaded once every plugin has enabled (but before the first tick), so module
+        // dependencies are usable regardless of plugin load order
+        Bukkit.getPluginManager().registerEvents(new Listener() {
+            @EventHandler
+            public void onServerLoad(ServerLoadEvent event) {
+                registerModules();
+                loadModules();
+            }
+        }, this);
     }
 
     @Override
@@ -370,31 +376,12 @@ public class MasterPlugin extends JavaPlugin {
     }
 
     public void sendChatControlMessage(CommandSender sender, String channel, String msg) {
-        if (Channel.isChannelLoaded(channel)) {
-            Channel realchannel = Channel.findChannel(channel);
-            String colourmsg = ChatColor.translateAlternateColorCodes('&', msg);
-            try {
-                realchannel.sendMessage(sender, msg);
-            } catch (EventHandledException e) {
-                if (e.isCancelled()) {
-                    getLogger().warning("Error: Chat message of " + sender.getName()
-                            + " was cancelled by CCR: " + e.getMessage());
-                    sender.sendMessage(ChatColor.RED + "Your chat message was cancelled");
-                } else {
-                    getLogger().warning("Error: Failed to send chat message of " + sender.getName() + ": "
-                            + e.getMessage());
-                    sender.sendMessage(ChatColor.RED + "Error sending channel message");
-                }
-            } catch (Exception e) {
-                getLogger().warning("Error sending channel message: " + e.getClass());
-                getLogger().warning("Reason: " + e.getMessage());
-                e.printStackTrace();
-                sender.sendMessage(ChatColor.RED + "Error sending channel message");
-            }
-        } else {
-            getLogger().warning("[Pandora] Invalid channel \"" + channel + "\"");
-            Thread.dumpStack();
+        // ChatControl classes must not be referenced from this class, see ChatControlUtil
+        if (Bukkit.getPluginManager().getPlugin("ChatControl") == null) {
+            getLogger().warning("ChatControl is not installed, cannot send message to channel \"" + channel + "\"");
+            return;
         }
+        ChatControlUtil.sendMessage(this, sender, channel, msg);
     }
 
     private Module createModule(String name, String moduleClass) {

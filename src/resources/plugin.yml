@@ -5,9 +5,7 @@ description: ${project.description}
 
 main: ${mainClass}
 
-softdepend: [geSuitHomes, Multiverse-Core, My_Worlds, GriefPrevention, QuickShop, VanishNoPacket, Citizens, Votifier, Monolith, Minigames, MurderMystery, BuildBattle, VillageDefense, PrisonMines, ChatControl, RPlace, Konquest, Treasures, Slimefun, PlaceholderAPI]
-
-loadbefore: [CommandHelper]
+softdepend: [geSuitHomes, Multiverse-Core, My_Worlds, GriefPrevention, QuickShop, VanishNoPacket, Citizens, Monolith, Minigames, MurderMystery, BuildBattle, PrisonMines, ChatControl, RPlace, Konquest, Treasures, Slimefun, PlaceholderAPI]
 
 permissions:
   pandora.antibuild.bypass:
